@@ -2,6 +2,8 @@
 
 # Jxu @ 2015-11-16
 
+swapspace=$(( $(head -n1 /proc/meminfo | awk '{print $2}') / 1024 * 2 ))
+
 sgdisk --clear \
 -a 4096 \
 -n 1:0:+2M            -t 1:ef02 -c 1:"BIOS boot"  \
