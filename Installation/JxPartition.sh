@@ -12,18 +12,27 @@ sgdisk --clear \
 -n 6:0:0              -t 6:8300 -c 6:"Linux home" \
 --print /dev/sda
 
+read -e -sn 1 -p "Press enter to continue..."
+  
+mkswap /dev/sda5
+swapon /dev/sda5
+
+read -e -sn 1 -p "Press enter to continue..."
+
 mkfs.ext4 /dev/sda2
 mkfs.ext4 /dev/sda3
 mkfs.ext4 /dev/sda4
-mkswap    /dev/sda5
 mkfs.ext4 /dev/sda6
 
-mkdir -p /mnt/boot
-mkdir -p /mnt/var
-mkdir -p /mnt/home
+read -e -sn 1 -p "Press enter to continue..."
 
-mount   /dev/sda2 /mnt/boot
-mount   /dev/sda3 /mnt
-mount   /dev/sda4 /mnt/var
-swapon  /dev/sda5
-mount   /dev/sda6 /mnt/home
+mount /dev/sda3 /mnt
+
+mkdir -p /mnt/boot
+mount /dev/sda2 /mnt/boot
+
+mkdir -p /mnt/var
+mount /dev/sda4 /mnt/var
+
+mkdir -p /mnt/home
+mount /dev/sda6 /mnt/home
