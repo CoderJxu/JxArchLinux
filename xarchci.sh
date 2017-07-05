@@ -97,7 +97,7 @@ bootmode(){
   else
     bootflag="BIOS"
   fi
-  printmsg "当前系统的启动模式为 $bootflag"
+  printmsg "当前系统的启动模式为 ${bootflag}"
 }
 
 # 系统设置
